@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-from os.path import getsize
 from sys import getsizeof
 
 class Data:
@@ -38,7 +37,7 @@ class Store:
                 try:
                     readFile=None
                     with open('./db.json','r') as fr:
-                        if getsize(fr)>=1000000000:
+                        if getsizeof(fr)>=1000000000:
                             return print("\n[ERROR]....Store size exceeded 1GB.\n")
                         readFile = json.load(fr)
                         
@@ -92,6 +91,3 @@ class Store:
                 return print('\n[NOT FOUND]....key not found!\n')
         else:
             return print('\n[NO DATA]....store is empty!\n')
-
-test=Store()
-test.read()
